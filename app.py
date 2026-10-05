@@ -33,11 +33,11 @@ st.set_page_config(page_title="CarbonWise: Personal Environmental Impact Tracker
 st.title("CarbonWise: Personal Environmental Impact Tracker")
 
 st.markdown("""
-Built to better understand the environmental impact of everyday travel, this project started as a way to reflect on how much carbon gets emitted just by getting from place to place. I originally planned to use my Google Maps Takeout data to analyse this—but turns out my location history was off the whole time :( So I came up with the idea of simulating my entire travel history instead. I mapped out 23 years of my life, from childhood (mostly home and family outings), to school years (hello daily bus rides), uni life, part-time work, and everything in between.
+Built to better understand the environmental impact of everyday travel, this project started as a way to reflect on how much carbon gets emitted just by getting from place to place. I originally planned to use my Google Maps Takeout data to analyse this, but turns out my location history was off the whole time :( So I came up with the idea of simulating my entire travel history instead. I mapped out 23 years of my life, from childhood (mostly home and family outings), to school years (hello daily bus rides), uni life, part-time work, and everything in between.
 
-The dashboard shows total CO₂ emissions, total distance travelled, breaks down emissions by transport mode (with flights shown separately), even tracks your monthly emissions against a personal goal, and points out greener travel alternatives with estimated carbon savings. Behind the scenes, there’s a simple decision tree model that figures out when a more sustainable mode (like walking, cycling, or public transport) makes sense—based not just on distance, but also on the purpose of the trip and whether switching would actually reduce emissions in a meaningful way.
+The dashboard shows total carbon emissions, total distance travelled, breaks down emissions by transport mode (with flights shown separately), even tracks your monthly emissions against a personal goal, and points out greener travel alternatives with estimated carbon savings. Behind the scenes, there’s a simple decision tree model that figures out when a more sustainable mode (like walking, cycling, or public transport) makes sense, based not just on distance, but also on the purpose of the trip and whether switching would actually reduce emissions in a meaningful way.
 
-There's also a custom input section where anyone can add their own trips and instantly get the same kind of insights and suggestions based on their data. Basically, it’s a tool to help reflect on how we move through the world—and how we could do it more sustainably.
+There's also a custom input section where anyone can add their own trips and instantly get the same kind of insights and suggestions based on their data. Basically, it’s a tool to help reflect on how we move through the world, and how we could do it more sustainably.
 """)
 
 st.markdown("Feel free to download a sample travel log below to see how the dashboard works with real-ish data.")
@@ -73,9 +73,9 @@ def render_dashboard(df, co2_goal):
     df = enrich_data(df)
 
     st.header("Environmental Impact Overview")
-    st.caption("Here’s a quick summary of the travel distance, how much CO₂ that added up to, and how many greener swaps were possible.")
+    st.caption("Here’s a quick summary of the travel distance, how much carbon that added up to, and how many greener swaps were possible.")
     col1, col2, col3 = st.columns(3)
-    col1.metric("Total CO₂ Emissions", f"{int(df['CO2_emission_g'].sum()):,} g")
+    col1.metric("Total Carbon Emissions", f"{int(df['CO2_emission_g'].sum()):,} g")
     col2.metric("Total Distance Travelled", f"{df['Distance_km'].sum():.1f} km")
     col3.metric("Greener Alternatives Available", f"{(df['Mode'] != df['Predicted_Mode']).sum()} trips")
 
@@ -89,7 +89,7 @@ def render_dashboard(df, co2_goal):
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("### Flight Emissions")
-    st.caption("Flying packs a bigger punch when it comes to carbon—here’s how flights stacked up.")
+    st.caption("Flying packs a bigger punch when it comes to carbon, here’s how flights stacked up.")
     flights = df[df['Mode'] == 'Flight']
     if not flights.empty:
         fig = px.bar(flights.groupby('To')['CO2_emission_g'].sum().reset_index(),
@@ -141,7 +141,7 @@ def render_dashboard(df, co2_goal):
 
 # Sidebar Goal
 st.sidebar.header("Set a monthly carbon goal you'd like to aim for")
-st.sidebar.caption("This is just a reference point—it helps track whether we're staying within a sustainable range each month.")
+st.sidebar.caption("This is just a reference point, it helps track whether we're staying within a sustainable range each month.")
 co2_goal = st.sidebar.slider("grams", 5000, 100000, 25000, 5000)
 
 # Mode
