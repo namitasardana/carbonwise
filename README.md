@@ -43,9 +43,9 @@ Where could I realistically have made different choices?
 
 There are a few things I'd like to explore next:
 
-Replace the synthetic data with real travel data if I can access it in the future.
-Let users upload their own CSV travel history instead of entering trips manually.
-Improve the emissions estimates by accounting for factors like vehicle type, occupancy and different public transport systems.
-Add maps and geographic visualisations to show travel patterns.
-Experiment with more advanced recommendation models and compare them with the current Decision Tree approach.
-Track changes in travel behaviour over time and make the recommendations more personalised.
+- Replace the synthetic data with real travel data if I can access it in the future.
+- Let users upload their own CSV travel history instead of entering trips manually.
+- Improve the emissions estimates by accounting for factors like vehicle type, occupancy and different public transport systems.
+- Add maps and geographic visualisations to show travel patterns.
+- Experiment with more advanced recommendation models and compare them with the current Decision Tree approach.
+- Track changes in travel behaviour over time and make the recommendations more personalised.
