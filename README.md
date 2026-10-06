@@ -4,20 +4,25 @@ I built CarbonWise to explore the environmental impact of my everyday travel hab
 ### Running it locally
 
 Clone the repository and navigate into the project:
+
 git clone https://github.com/your-username/carbonwise.git
+
 cd carbonwise
 
 Install the required Python packages:
+
 pip install streamlit pandas plotly scikit-learn joblib
 
 Train the recommendation model:
+
 python train_model.py
 
 This will generate the model files:
-recommendation_model.pkl
-model_features.pkl
+
+recommendation_model.pkl, model_features.pkl
 
 Then start the Streamlit dashboard:
+
 streamlit run app.py
 
 The app should open automatically in your browser.
